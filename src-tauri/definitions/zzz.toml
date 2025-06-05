@@ -38,7 +38,10 @@ entities = [
     { name = "Von Lycaon", slug = "von", description = "Von Lycaon is a playable Agent in Zenless Zone Zero, and the Leader of Victoria Housekeeping Co.", details = '{"rank": "S", "attribute": "Ice", "specialty": "Stun", "type": ["Strike"]}', base_image = "von_base.jpg" },
     { name = "Zhu Yuan", slug = "zhu", description = "Zhu Yuan is a playable Agent in Zenless Zone Zero, and the Leader of the Criminal Investigation Special Response Team.", details = '{"rank": "S", "attribute": "Ether", "specialty": "Attack", "type": ["Pierce"]}', base_image = "zhu_base.jpg" },
     { name = "Vivian Banshee", slug = "vivian", description = "Vivian Banshee is a playable Agent in Zenless Zone Zero, and a member of Mockingbird.", details = '{"rank": "S", "attribute": "Ether", "specialty": "Anomaly", "type": ["Slash"]}', base_image = "vivan_base.jpg" },
-    { name = "Hugo Vlad", slug = "hugo", description = "Hugo Vlad is a playable Agent in Zenless Zone Zero, and a member of Mockingbird.", details = '{"rank": "S", "attribute": "Ice", "specialty": "Attack", "type": [""]}', base_image = "hugo_base.jpg" },
+    { name = "Hugo Vlad", slug = "hugo", description = "Hugo Vlad is a playable Agent in Zenless Zone Zero, and a member of Mockingbird.", details = '{"rank": "S", "attribute": "Ice", "specialty": "Attack", "type": ["Slash"]}', base_image = "hugo_base.jpg" },
+    { name = "Ju Fufu", slug = "jufufu", description = "Ju Fufu is a playable Agent in Zenless Zone Zero, and a member of Yunkui Summit.", details = '{"rank": "S", "attribute": "Fire", "specialty": "Stun", "type": [""]}', base_image = "jufufu_base.jpg" },
+    { name = "Yixuan", slug = "yixuan", description = "Yixuan is a playable Agent in Zenless Zone Zero, and the High Preceptor of Yunkui Summit.", details = '{"rank": "S", "attribute": "AuricInk", "specialty": "Rupture", "type": ["Strike"]}', base_image = "yixuan_base.jpg" },
+    { name = "Pan Yinhu", slug = "yinhu", description = "Pan Yinhu is a playable Agent in Zenless Zone Zero, and a member of Yunkui Summit.", details = '{"rank": "A", "attribute": "Physical", "specialty": "Defense", "type": [""]}', base_image = "yinhu_base.jpg" },
 ]
 
 # ===================

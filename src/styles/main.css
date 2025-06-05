@@ -1656,3 +1656,7 @@ input:disabled + .slider {
 .character-card[data-attribute="Physical"] {
     border-left: 3px solid var(--zzz-physical);
 }
+
+.character-card[data-attribute="AuricInk"] {
+    border-left: 3px solid var(--zzz-auric-ink);
+}

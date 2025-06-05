@@ -27,6 +27,7 @@ const attributes = [
     { key: 'Frost', name: 'Frost', icon: 'fas fa-snowflake', color: 'var(--zzz-ice)' },
     { key: 'Ether', name: 'Ether', icon: 'fas fa-star', color: 'var(--zzz-ether)' },
     { key: 'Physical', name: 'Physical', icon: 'fas fa-fist-raised', color: 'var(--zzz-physical)' },
+    { key: 'AuricInk', name: 'Auric Ink', icon: 'fas fa-paint-brush', color: 'var(--zzz-auric-ink)' },
 ];
 
 // Helper to safely parse JSON

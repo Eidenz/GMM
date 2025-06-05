@@ -26,6 +26,7 @@ const attributeIconsFA = {
     Fire: "fas fa-fire-alt",
     Ice: "fas fa-icicles",
     Electric: "fas fa-bolt",
+    AuricInk: "fas fa-paint-brush",
     // Add more ZZZ attributes as needed
 };
 
@@ -35,6 +36,7 @@ const specialtyIconsFA = {
     Support: "fas fa-hands-helping",
     Defense: "fas fa-shield-alt",
     Healer: "fas fa-first-aid",
+    Rupture: "fas fa-bomb",
     // Add more ZZZ specialties as needed
 };
 
