@@ -13,6 +13,14 @@ const parseDetails = (detailsJson) => {
     }
 };
 
+const getRarityColor = (value) => {
+    if (!value) return '#888'; // Default color for unknown rarity
+    const val = value.toLowerCase();
+    if (val === '5 star' || val === 's') return '#ffcc00'; // Gold
+    if (val === '4 star' || val === 'a') return '#a259ec'; // Purple
+    return '#888'; // Gray for fallback
+}
+
 // Font Awesome icons map for Genshin elements
 const elementIconsFA = {
     Electro: "fas fa-bolt", Pyro: "fas fa-fire", Cryo: "fas fa-snowflake",
@@ -52,7 +60,7 @@ const resonatorIconsFA = {
 };
 
 // Icons for common displays
-const RarityIcon = () => <i className="fas fa-star fa-fw" style={{ color: '#ffcc00' }}></i>;
+const RarityIcon = ({ value }) => <i className="fas fa-star fa-fw" style={{ color: getRarityColor(value) }}></i>;
 const TypeIcon = () => <i className="fas fa-tag fa-fw" style={{ color: '#7acbf9' }}></i>;
 const DEFAULT_PLACEHOLDER_IMAGE = '/images/unknown.jpg';
 
@@ -151,13 +159,13 @@ function EntityCard({ entity }) {
                 {/* Shared properties with different styling */}
                 {details?.rarity && (
                     <div className="card-element" style={{ marginTop: '5px', fontSize: '13px' }}>
-                        <RarityIcon /> {details.rarity}
+                        <RarityIcon value={details.rarity} /> {details.rarity}
                     </div>
                 )}
                 
                 {details?.rank && (
                     <div className="card-rank" style={{ marginTop: '5px', fontSize: '13px' }}>
-                        <i className="fas fa-medal fa-fw" style={{ color: '#ffaa33' }}></i> Rank {details.rank}
+                        <i className="fas fa-medal fa-fw" style={{ color: getRarityColor(details.rank) }}></i> Rank {details.rank}
                     </div>
                 )}
             </div>
