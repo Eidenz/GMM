@@ -90,6 +90,7 @@ entities = [
 [ui]
 name = "UI"
 entities = [
+    { name = "GUI", slug = "zzz-gui", description = "Graphical User Interface.", details = '{"type": "GUI"}', base_image = "zzz_gui.jpg" },
     { name = "Icons", slug = "zzz-icons", description = "Game icons.", details = '{"type": "Icons"}', base_image = "zzz_icons.jpg" },
     { name = "Effects", slug = "zzz-effects", description = "Game effects.", details = '{"type": "FX"}', base_image = "zzz_effects.jpg" },
     { name = "Map", slug = "zzz-map", description = "Map modifications.", details = '{"type": "Map"}', base_image = "zzzmap.jpg" },
