@@ -2,7 +2,7 @@
 
 ![Characters List](https://github.com/user-attachments/assets/c45b7d4d-6a2a-45a9-8f44-ded6ef450b1d)
 
-**A modern, cross-platform manager for Genshin Impact & Zenless Zone Zero, built with Tauri and React.**
+**A modern, cross-platform manager for gacha games, built with Tauri and React.**
 
 [![Latest Release](https://img.shields.io/github/v/release/Eidenz/gmm-updates?label=Latest%20Release&style=for-the-badge)](https://github.com/Eidenz/gmm/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Eidenz/gmm-updates/total?style=for-the-badge)](https://github.com/Eidenz/gmm/releases)
