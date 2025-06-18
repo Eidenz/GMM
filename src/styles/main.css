@@ -28,6 +28,14 @@
     --zzz-ice: #99d8f0;
     --zzz-ether: #d17df5;
     --zzz-physical: #c2c8ce;
+
+    /* Wuwa Attribute Colors */
+    --wuwa-aero: #2bc99e;
+    --wuwa-electro: #ab32b6;
+    --wuwa-fusion: #c42a4e;
+    --wuwa-glacio: #37b1d1;
+    --wuwa-havoc: #971654;
+    --wuwa-spectro: #bba81e;
 }
 
 /* Base styles */

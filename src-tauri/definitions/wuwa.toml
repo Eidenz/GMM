@@ -4,6 +4,7 @@
 [characters]
 name = "Characters"
 entities = [
+  { name = "Aalto", slug = "aalto", description = "Aalto is an enigmatic Information Broker, known for his elusive nature and welcoming smile. Rumor has it he'll provide any information at the right price.", details = '{"rarity": "4 Star", "resonator_attribute": "Aero", "resonator_weapon": "Pistols"}', base_image = "aalto_base.jpg" }
 ]
 
 # ===================
