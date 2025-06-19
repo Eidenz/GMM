@@ -70,9 +70,9 @@
         "minHeight": 650,
         "resizable": true,
         "fullscreen": false,
+        "maximized": true,
         "decorations": true,
-        "visible": true,
-        "center": true
+        "visible": true
       }
     ],
     "updater": {
