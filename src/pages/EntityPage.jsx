@@ -26,9 +26,9 @@ const WIKI_BASE_URLS = {
 const getWikiUrl = (entityName, activeGame) => {
     const formattedName = entityName.replace(/\s+/g, '_');
     const baseUrl = WIKI_BASE_URLS[activeGame] || WIKI_BASE_URLS.genshin;
-    
+
     return `${baseUrl}${formattedName}`;
-  };
+};
 
 // Helper function to parse details JSON
 const parseDetails = (detailsJson) => {
@@ -75,89 +75,101 @@ const specialtyIconsFA = {
 };
 
 const typeIconsFA = {
-    DPS: "fas fa-fire", 
+    DPS: "fas fa-fire",
     Tank: "fas fa-shield-alt",
     Healer: "fas fa-heart",
     // Add more common types as needed
 };
 
+// Font Awesome icons map for Wuwa resonator attributes
+const resonatorIconsFA = {
+    Aero: "fas fa-wind",
+    Electro: "fas fa-bolt",
+    Fusion: "fas fa-fire-flame-curved",
+    Glacio: "fas fa-snowflake",
+    Havoc: "fas fa-explosion",
+    Spectro: "fas fa-sun",
+    // Add more Wuwa resonator attributes as needed
+};
+
+
 const EnhancedScrollIndicator = ({ onViewMods }) => {
     const [hovered, setHovered] = useState(false);
-    
+
     return (
-      <div className="scroll-indicator" style={{
-        textAlign: 'center',
-        marginTop: '0',
-        padding: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        color: 'rgba(255, 255, 255, 0.8)',
-        fontSize: '16px'
-      }}>
-        {/* Animated scroll text */}
-        <motion.p
-          initial={{ opacity: 0, y: -5 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          style={{ marginBottom: '15px' }}
-        >
-          Scroll down to view mods
-        </motion.p>
-        
-        {/* Enhanced button with animation */}
-        <motion.button 
-          className="btn view-mods-button"
-          initial={{ scale: 1 }}
-          whileHover={{ 
-            scale: 1.05,
-            transition: { duration: 0.2 }
-          }}
-          whileTap={{ scale: 0.98 }}
-          onClick={onViewMods}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          style={{
-            marginTop: '10px',
-            background: `linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)`,
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '9px 20px',
-            fontSize: '15px',
-            fontWeight: '500',
-            cursor: 'pointer',
+        <div className="scroll-indicator" style={{
+            textAlign: 'center',
+            marginTop: '0',
+            padding: '20px',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            gap: '8px',
-            boxShadow: hovered 
-              ? '0 5px 15px rgba(156, 136, 255, 0.5)' 
-              : '0 4px 10px rgba(156, 136, 255, 0.3)',
-            transition: 'box-shadow 0.3s ease',
-          }}
-        >
-          <motion.i 
-            className="fas fa-chevron-down fa-fw"
-            animate={{ 
-              y: [0, 3, 0],
-            }}
-            transition={{ 
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut"
-            }}
-          />
-          View Mods
-        </motion.button>
-      </div>
+            color: 'rgba(255, 255, 255, 0.8)',
+            fontSize: '16px'
+        }}>
+            {/* Animated scroll text */}
+            <motion.p
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                }}
+                style={{ marginBottom: '15px' }}
+            >
+                Scroll down to view mods
+            </motion.p>
+
+            {/* Enhanced button with animation */}
+            <motion.button
+                className="btn view-mods-button"
+                initial={{ scale: 1 }}
+                whileHover={{
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={onViewMods}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                style={{
+                    marginTop: '10px',
+                    background: `linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)`,
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '9px 20px',
+                    fontSize: '15px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    boxShadow: hovered
+                        ? '0 5px 15px rgba(156, 136, 255, 0.5)'
+                        : '0 4px 10px rgba(156, 136, 255, 0.3)',
+                    transition: 'box-shadow 0.3s ease',
+                }}
+            >
+                <motion.i
+                    className="fas fa-chevron-down fa-fw"
+                    animate={{
+                        y: [0, 3, 0],
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut"
+                    }}
+                />
+                View Mods
+            </motion.button>
+        </div>
     );
-  };
+};
 
 const RarityIcon = () => <i className="fas fa-star fa-fw" style={{ color: '#ffcc00' }}></i>;
 const TypeIcon = () => <i className="fas fa-tag fa-fw" style={{ color: '#7acbf9' }}></i>;
@@ -222,7 +234,7 @@ function EntityPage() {
     // New state for section view
     const [activeSection, setActiveSection] = useState('entity'); // 'entity' or 'mods'
     const mainContainerRef = useRef(null);
-    
+
     // For detecting scroll direction
     const [hasScrolled, setHasScrolled] = useState(false);
     const pageRef = useRef(null);
@@ -230,18 +242,18 @@ function EntityPage() {
     const [isWikiButtonHovered, setIsWikiButtonHovered] = useState(false);
     const [wikiError, setWikiError] = useState('');
     const [activeGame, setActiveGame] = useState('genshin');
-    
+
     useEffect(() => {
         const fetchActiveGame = async () => {
-          try {
-            const game = await invoke('get_active_game');
-            setActiveGame(game || 'genshin');
-          } catch (err) {
-            console.error("Failed to get active game:", err);
-            setActiveGame('genshin');
-          }
+            try {
+                const game = await invoke('get_active_game');
+                setActiveGame(game || 'genshin');
+            } catch (err) {
+                console.error("Failed to get active game:", err);
+                setActiveGame('genshin');
+            }
         };
-        
+
         fetchActiveGame();
     }, []);
 
@@ -277,22 +289,29 @@ function EntityPage() {
             setEntity(entityDetails);
             const entityAssets = await invoke('get_assets_for_entity', { entitySlug });
             setAssets(entityAssets);
-            
+
+            setAvailableTypes([]);
+
             // Extract available types for filtering
             const details = parseDetails(entityDetails.details);
-            if (details?.types && Array.isArray(details.types)) {
+            if (activeGame === 'zzz' && details?.types && Array.isArray(details.types)) {
                 setAvailableTypes(details.types);
+            }
+
+            // Wuwa branch
+            if (activeGame === 'wuwa' && details?.resonator_attribute) {
+                setAvailableTypes([details.resonator_attribute]);
             }
         } catch (err) {
             const errorString = typeof err === 'string' ? err : (err?.message || 'Unknown error');
             console.error(`[EntityPage ${entitySlug}] Failed to load data:`, errorString);
-             if (errorString.includes("not found")) setError(`Entity '${entitySlug}' not found.`);
-             else setError(`Could not load details or mods for ${entitySlug}. Details: ${errorString}`);
+            if (errorString.includes("not found")) setError(`Entity '${entitySlug}' not found.`);
+            else setError(`Could not load details or mods for ${entitySlug}. Details: ${errorString}`);
         } finally {
             setLoading(false);
             console.log(`[EntityPage ${entitySlug}] Fetching complete. Loading: ${false}`);
         }
-    }, [entitySlug, sortStorageKey]); // Added sortStorageKey dependency
+    }, [entitySlug, sortStorageKey, activeGame]); // Added sortStorageKey dependency
 
     useEffect(() => {
         fetchData();
@@ -338,13 +357,13 @@ function EntityPage() {
 
     // goBack function
     const goBack = () => {
-         if (window.history.length > 2) {
+        if (window.history.length > 2) {
             navigate(-1);
-         } else {
-             // Fallback logic
-             const fallbackCategory = entity?.category_id === 1 ? 'characters' : 'characters'; // Simple default
-             navigate(`/category/${fallbackCategory}`);
-         }
+        } else {
+            // Fallback logic
+            const fallbackCategory = entity?.category_id === 1 ? 'characters' : 'characters'; // Simple default
+            navigate(`/category/${fallbackCategory}`);
+        }
     };
 
     // Edit Modal Handlers
@@ -364,10 +383,10 @@ function EntityPage() {
         console.log("Save successful, processing result. New Target Slug:", targetSlug);
         handleCloseEditModal();
         if (targetSlug && targetSlug !== entitySlug) {
-             console.log(`Asset relocated from ${entitySlug} to ${targetSlug}. Refreshing data.`);
-             toast.info(`Mod relocated to ${targetSlug}. Refreshing list...`);
-             // Refresh the current page's data (which will now exclude the moved mod)
-             fetchData();
+            console.log(`Asset relocated from ${entitySlug} to ${targetSlug}. Refreshing data.`);
+            toast.info(`Mod relocated to ${targetSlug}. Refreshing list...`);
+            // Refresh the current page's data (which will now exclude the moved mod)
+            fetchData();
         } else {
             console.log(`Asset updated within ${entitySlug}. Refreshing data.`);
             toast.success(`Mod details updated.`);
@@ -399,14 +418,14 @@ function EntityPage() {
             console.log(`Asset ${assetToDelete.id} deleted successfully.`);
             toast.success(`Mod "${assetToDelete.name}" deleted.`);
             setAssets(currentAssets => currentAssets.filter(asset => asset.id !== assetToDelete.id));
-             setEntity(currentEntity => ({ ...currentEntity, mod_count: Math.max(0, (currentEntity?.mod_count || 0) - 1) }));
-             handleCloseDeleteModal();
+            setEntity(currentEntity => ({ ...currentEntity, mod_count: Math.max(0, (currentEntity?.mod_count || 0) - 1) }));
+            handleCloseDeleteModal();
         } catch (err) {
             const errorString = typeof err === 'string' ? err : (err?.message || 'Unknown delete error');
             console.error(`Failed to delete asset ${assetToDelete.id}:`, errorString);
             setDeleteError(`Failed to delete: ${errorString}`); // Show error in modal
             toast.error(`Failed to delete "${assetToDelete.name}": ${errorString}`); // Also show toast
-             setIsDeleting(false); // Keep modal open on error
+            setIsDeleting(false); // Keep modal open on error
         }
     }, [assetToDelete, handleCloseDeleteModal]);
 
@@ -438,29 +457,30 @@ function EntityPage() {
                 let matchesSearch = true;
                 if (modSearchTerm) {
                     const lowerSearchTerm = modSearchTerm.toLowerCase();
-                    matchesSearch = 
+                    matchesSearch =
                         asset.name.toLowerCase().includes(lowerSearchTerm) ||
                         (asset.author && asset.author.toLowerCase().includes(lowerSearchTerm)) ||
                         (asset.category_tag && asset.category_tag.toLowerCase().includes(lowerSearchTerm));
                 }
-                
+
                 // Type filtering (only apply if there are active filters)
                 let matchesTypeFilter = true;
                 if (activeTypeFilters.length > 0) {
-                    // Parse the asset's details to check types
+                    // Parse the asset's details to check types based on current game
                     const assetDetails = parseDetails(asset.details);
-                    if (assetDetails.types && Array.isArray(assetDetails.types)) {
-                        // Check if any of the asset's types match any of the active filters
-                        // This is an OR relationship between filters
-                        matchesTypeFilter = assetDetails.types.some(type => 
-                            activeTypeFilters.includes(type)
-                        );
+                    if (activeGame === 'zzz') {
+                        matchesTypeFilter =
+                            Array.isArray(assetDetails.types) &&
+                            assetDetails.types.some(t => activeTypeFilters.includes(t));
+                    } else if (activeGame === 'wuwa') {
+                        const attr = assetDetails.resonator_attribute;
+                        matchesTypeFilter = attr && activeTypeFilters.includes(attr);
                     } else {
                         // If the asset doesn't have types, it won't match any type filter
                         matchesTypeFilter = false;
                     }
                 }
-                
+
                 return matchesSearch && matchesTypeFilter;
             });
         }
@@ -486,7 +506,7 @@ function EntityPage() {
         });
 
         return tempAssets;
-    }, [assets, modSearchTerm, sortOption, activeTypeFilters]); // Added activeTypeFilters dependency
+    }, [assets, modSearchTerm, sortOption, activeTypeFilters, activeGame]); // Added activeTypeFilters dependency
     // --- END UPDATED useMemo ---
 
     // --- Bulk Action Handlers ---
@@ -540,21 +560,21 @@ function EntityPage() {
 
                 // Update the asset in our map immediately after successful toggle
                 const isCurrentlyDisabledPrefixed = currentAsset.folder_name.startsWith('DISABLED_');
-                 let cleanRelativePath = currentAsset.folder_name;
-                 if (isCurrentlyDisabledPrefixed) {
-                     const parts = currentAsset.folder_name.split('/');
-                     const filename = parts.pop() || '';
-                     cleanRelativePath = parts.length > 0 ? `${parts.join('/')}/${filename.substring(9)}` : filename.substring(9);
-                 }
-                 let updatedFolderName;
-                 if (newIsEnabledState) {
-                      updatedFolderName = cleanRelativePath;
-                 } else {
-                      const parts = cleanRelativePath.split('/');
-                      const filename = parts.pop() || '';
-                      const disabledFilename = `DISABLED_${filename}`;
-                      updatedFolderName = parts.length > 0 ? `${parts.join('/')}/${disabledFilename}` : disabledFilename;
-                  }
+                let cleanRelativePath = currentAsset.folder_name;
+                if (isCurrentlyDisabledPrefixed) {
+                    const parts = currentAsset.folder_name.split('/');
+                    const filename = parts.pop() || '';
+                    cleanRelativePath = parts.length > 0 ? `${parts.join('/')}/${filename.substring(9)}` : filename.substring(9);
+                }
+                let updatedFolderName;
+                if (newIsEnabledState) {
+                    updatedFolderName = cleanRelativePath;
+                } else {
+                    const parts = cleanRelativePath.split('/');
+                    const filename = parts.pop() || '';
+                    const disabledFilename = `DISABLED_${filename}`;
+                    updatedFolderName = parts.length > 0 ? `${parts.join('/')}/${disabledFilename}` : disabledFilename;
+                }
                 updatedAssetsMap.set(assetId, { ...currentAsset, is_enabled: newIsEnabledState, folder_name: updatedFolderName });
 
                 successCount++;
@@ -574,9 +594,9 @@ function EntityPage() {
 
         // Update toast based on outcome
         if (failCount === 0) {
-             toast.update(toastId, { render: `${enable ? 'Enabled' : 'Disabled'} ${successCount} mods successfully!`, type: 'success', isLoading: false, autoClose: 3000 });
+            toast.update(toastId, { render: `${enable ? 'Enabled' : 'Disabled'} ${successCount} mods successfully!`, type: 'success', isLoading: false, autoClose: 3000 });
         } else {
-             toast.update(toastId, { render: `Bulk action completed. ${successCount} succeeded, ${failCount} failed.`, type: 'warning', isLoading: false, autoClose: 5000 });
+            toast.update(toastId, { render: `Bulk action completed. ${successCount} succeeded, ${failCount} failed.`, type: 'warning', isLoading: false, autoClose: 5000 });
         }
 
         setIsBulkProcessing(false);
@@ -624,7 +644,7 @@ function EntityPage() {
     }, []);
 
     // --- New section transition handlers ---
-    
+
     const handleScrollToMods = useCallback(() => {
         setActiveSection('mods');
         setHasScrolled(true);
@@ -705,7 +725,7 @@ function EntityPage() {
                 }
             },
         ];
-    // Dependencies include the asset itself and handlers needed within onClick
+        // Dependencies include the asset itself and handlers needed within onClick
     }, [contextMenuAsset, handleCloseContextMenu, handleOpenAddToPresetModal, handleOpenEditModal, handleOpenDeleteModal]);
     // --------------------------------
 
@@ -713,21 +733,21 @@ function EntityPage() {
         const asset = filteredAndSortedAssets[index]; // Use sorted/filtered list
         const isSelected = selectedAssetIds.has(asset.id);
         return (
-             <div style={style}>
-                 <ModCard
-                     key={asset.id}
-                     asset={asset}
-                     entitySlug={entitySlug}
-                     onToggleComplete={handleToggleComplete}
-                     onEdit={handleOpenEditModal}
-                     onDelete={handleOpenDeleteModal}
-                     viewMode="list"
-                     isSelected={isSelected}
-                     onSelectChange={handleAssetSelectChange}
-                     onContextMenu={(e) => handleShowContextMenu(e, asset)}
-                     onImageClick={handleImageClick}
-                 />
-             </div>
+            <div style={style}>
+                <ModCard
+                    key={asset.id}
+                    asset={asset}
+                    entitySlug={entitySlug}
+                    onToggleComplete={handleToggleComplete}
+                    onEdit={handleOpenEditModal}
+                    onDelete={handleOpenDeleteModal}
+                    viewMode="list"
+                    isSelected={isSelected}
+                    onSelectChange={handleAssetSelectChange}
+                    onContextMenu={(e) => handleShowContextMenu(e, asset)}
+                    onImageClick={handleImageClick}
+                />
+            </div>
         );
     };
 
@@ -737,8 +757,8 @@ function EntityPage() {
         if (index >= filteredAndSortedAssets.length) return null; // Out of bounds
         const asset = filteredAndSortedAssets[index]; // Use sorted/filtered list
         return (
-             <div style={style}>
-                <div style={{ padding: '0 10px 10px 10px', height:'100%' }}>
+            <div style={style}>
+                <div style={{ padding: '0 10px 10px 10px', height: '100%' }}>
                     <ModCard
                         key={asset.id}
                         asset={asset}
@@ -750,8 +770,8 @@ function EntityPage() {
                         onContextMenu={(e) => handleShowContextMenu(e, asset)}
                         onImageClick={handleImageClick}
                     />
-                 </div>
-             </div>
+                </div>
+            </div>
         );
     };
 
@@ -762,14 +782,14 @@ function EntityPage() {
 
     // Details parsing and avatar URL
     const details = parseDetails(entity.details);
-    
+
     // Determine character type (Genshin or ZZZ)
     const element = details?.element;
     const elementIconClass = element ? (elementIconsFA[element] || 'fas fa-question-circle') : null;
     const weapon = details?.weapon;
     const weaponIconClass = weapon ? (weaponIconsFA[weapon] || 'fas fa-question-circle') : null;
     const rarity = details?.rarity;
-    
+
     // ZZZ-specific properties
     const attribute = details?.attribute;
     const attributeIconClass = attribute ? (attributeIconsFA[attribute] || 'fas fa-atom') : null;
@@ -777,14 +797,19 @@ function EntityPage() {
     const specialtyIconClass = specialty ? (specialtyIconsFA[specialty] || 'fas fa-user-tag') : null;
     const types = details?.types || [];
     const rank = details?.rank;
-    
+
+    // Wuwa-specific properties
+    const wuwaAttribute = details?.resonator_attribute;
+    const wuwaWeapon = details?.resonator_weapon;
+    const wuwaAttributeIconClass = wuwaAttribute ? (resonatorIconsFA[wuwaAttribute] || 'fas fa-question-circle') : null;
+
     const avatarUrl = entity.base_image ? `/images/entities/${entitySlug}_base.jpg` : DEFAULT_ENTITY_PLACEHOLDER_IMAGE;
     const handleAvatarError = (e) => {
         if (e.target.src !== DEFAULT_ENTITY_PLACEHOLDER_IMAGE) {
             console.warn(`Failed to load entity avatar: ${avatarUrl}, falling back to placeholder.`);
             e.target.style.backgroundImage = `url('${DEFAULT_ENTITY_PLACEHOLDER_IMAGE}')`;
         }
-     };
+    };
 
     const gridColumnCount = Math.max(1, Math.floor(bounds.width / GRID_ITEM_WIDTH));
     const gridRowCount = Math.ceil(filteredAndSortedAssets.length / gridColumnCount); // Use sorted/filtered list
@@ -795,8 +820,8 @@ function EntityPage() {
     // -------------------------------------------
 
     return (
-        <div 
-            className={`character-page ${activeGame === 'zzz' ? 'zzz-character' : 'genshin-character'}`} 
+        <div
+            className={`character-page ${activeGame === 'zzz' ? 'zzz-character' : 'genshin-character'}`}
             style={{ height: '100%', overflow: 'hidden', position: 'relative' }}
             ref={pageRef}
             onContextMenu={(e) => {
@@ -825,8 +850,8 @@ function EntityPage() {
 
                 {/* Navigation between profile and mods only appears when in mods view */}
                 {activeSection === 'mods' && (
-                    <button 
-                        className="btn-icon" 
+                    <button
+                        className="btn-icon"
                         onClick={handleScrollToEntity}
                         style={{ fontSize: '20px', color: 'var(--primary)', background: 'none', border: 'none', cursor: 'pointer' }}
                         title="Back to character profile"
@@ -840,7 +865,7 @@ function EntityPage() {
             <div className="sections-container" style={{ height: 'calc(100vh - 70px)', position: 'relative' }}>
                 <AnimatePresence initial={false} mode="wait">
                     {activeSection === 'entity' ? (
-                        <motion.div 
+                        <motion.div
                             key="entity-section"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -871,16 +896,22 @@ function EntityPage() {
                                                 <i className={`${attributeIconClass} fa-fw`}></i>
                                             </span>
                                         }
+                                        {/* Display attribute icon for Wuwa characters */}
+                                        {wuwaAttributeIconClass && activeGame === 'wuwa' &&
+                                            <span className="attribute-icon" style={{ color: `var(--wuwa-${attribute?.toLowerCase()})` || 'var(--primary)' }} title={`Attribute: ${wuwaAttribute}`}>
+                                                <i className={`${wuwaAttributeIconClass} fa-fw`}></i>
+                                            </span>
+                                        }
                                     </h2>
                                     <div className="character-details">
                                         {/* Game-specific character details */}
                                         {/* Genshin-specific details */}
-                                        {activeGame === 'genshin' && element && 
+                                        {activeGame === 'genshin' && element &&
                                             <div className="character-detail">
                                                 <i className={`${elementIconClass} fa-fw`}></i> {element}
                                             </div>
                                         }
-                                        {activeGame === 'genshin' && weapon && 
+                                        {activeGame === 'genshin' && weapon &&
                                             <div className="character-detail">
                                                 <i className={`${weaponIconClass} fa-fw`}></i> {weapon}
                                             </div>
@@ -890,26 +921,26 @@ function EntityPage() {
                                                 <i className="fas fa-star fa-fw" style={{ color: '#ffcc00' }}></i> {rarity}
                                             </div>
                                         }
-                                        
+
                                         {/* ZZZ-specific details */}
-                                        {activeGame === 'zzz' && attribute && 
+                                        {activeGame === 'zzz' && attribute &&
                                             <div className="character-detail">
                                                 <i className={`${attributeIconClass} fa-fw`}></i> {attribute}
                                             </div>
                                         }
-                                        {activeGame === 'zzz' && specialty && 
+                                        {activeGame === 'zzz' && specialty &&
                                             <div className="character-detail">
                                                 <i className={`${specialtyIconClass} fa-fw`}></i> {specialty}
                                             </div>
                                         }
-                                        {activeGame === 'zzz' && rank && 
+                                        {activeGame === 'zzz' && rank &&
                                             <div className="character-detail">
                                                 <i className="fas fa-medal fa-fw" style={{ color: '#ffaa33' }}></i> Rank {rank}
                                             </div>
                                         }
-                                        
+
                                         {/* Display types for ZZZ characters */}
-                                        {activeGame === 'zzz' && types.length > 0 && (
+                                        {activeGame === 'zzz' && availableTypes.length > 0 && (
                                             <div className="character-types">
                                                 {types.map((type, index) => (
                                                     <span key={index} className="character-type-tag">
@@ -922,7 +953,7 @@ function EntityPage() {
                                     {entity.description ? (
                                         <p className="character-description">{entity.description}</p>
                                     ) : (
-                                        <p className="character-description placeholder-text" style={{padding: 0, textAlign:'left'}}>No description available.</p>
+                                        <p className="character-description placeholder-text" style={{ padding: 0, textAlign: 'left' }}>No description available.</p>
                                     )}
 
                                     {/* Game-aware Wiki Button */}
@@ -932,7 +963,7 @@ function EntityPage() {
                                         onMouseEnter={() => setIsWikiButtonHovered(true)}
                                         onMouseLeave={() => setIsWikiButtonHovered(false)}
                                         initial={{ scale: 1 }}
-                                        whileHover={{ 
+                                        whileHover={{
                                             scale: 1.05,
                                             transition: { duration: 0.2 }
                                         }}
@@ -950,8 +981,8 @@ function EntityPage() {
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '8px',
-                                            boxShadow: isWikiButtonHovered 
-                                                ? '0 5px 15px rgba(156, 136, 255, 0.5)' 
+                                            boxShadow: isWikiButtonHovered
+                                                ? '0 5px 15px rgba(156, 136, 255, 0.5)'
                                                 : '0 4px 10px rgba(156, 136, 255, 0.3)',
                                             transition: 'box-shadow 0.3s ease',
                                             maxWidth: 'fit-content'
@@ -972,10 +1003,10 @@ function EntityPage() {
                                 favoriteCount={entity.favorite_mod_count || 0} // You might need to add this to your entity details
                                 typeBreakdown={[
                                     // Example - replace with actual data from your app if available
-                                    {type: 'Appearance', count: Math.round(entity.mod_count * 0.4) || 0},
-                                    {type: 'Animation', count: Math.round(entity.mod_count * 0.2) || 0},
-                                    {type: 'Texture', count: Math.round(entity.mod_count * 0.3) || 0},
-                                    {type: 'Effect', count: Math.round(entity.mod_count * 0.1) || 0},
+                                    { type: 'Appearance', count: Math.round(entity.mod_count * 0.4) || 0 },
+                                    { type: 'Animation', count: Math.round(entity.mod_count * 0.2) || 0 },
+                                    { type: 'Texture', count: Math.round(entity.mod_count * 0.3) || 0 },
+                                    { type: 'Effect', count: Math.round(entity.mod_count * 0.1) || 0 },
                                 ]}
                             />
 
@@ -983,7 +1014,7 @@ function EntityPage() {
                             <EnhancedScrollIndicator onViewMods={handleScrollToMods} />
                         </motion.div>
                     ) : (
-                        <motion.div 
+                        <motion.div
                             key="mods-section"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -1005,12 +1036,12 @@ function EntityPage() {
                                                 ref={el => el && (el.indeterminate = isIndeterminate)}
                                                 onChange={handleSelectAllChange}
                                                 disabled={isBulkProcessing}
-                                                style={{ cursor: 'pointer', width:'16px', height:'16px' }}
+                                                style={{ cursor: 'pointer', width: '16px', height: '16px' }}
                                                 aria-label="Select all mods"
                                             />
                                         )}
                                     </div>
-                                    
+
                                     {/* --- Right Aligned Group (Bulk Actions, Sort, Search, View Mode) --- */}
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginLeft: 'auto' }}>
                                         {viewMode === 'list' && selectedAssetIds.size > 0 && (
@@ -1023,12 +1054,12 @@ function EntityPage() {
                                                 </button>
                                             </div>
                                         )}
-                                        
+
                                         {/* --- Type Filters (for ZZZ characters) --- */}
-                                        {activeGame === 'zzz' && types.length > 0 && (
+                                        {activeGame === 'zzz' && availableTypes.length > 0 && (
                                             <div className="type-filters-container">
                                                 <div className="type-filters">
-                                                    {types.map((type) => (
+                                                    {availableTypes.map((type) => (
                                                         <button
                                                             key={type}
                                                             className={`type-filter-btn ${activeTypeFilters.includes(type) ? 'active' : ''}`}
@@ -1039,8 +1070,8 @@ function EntityPage() {
                                                         </button>
                                                     ))}
                                                     {activeTypeFilters.length > 0 && (
-                                                        <button 
-                                                            className="type-filter-clear" 
+                                                        <button
+                                                            className="type-filter-clear"
                                                             onClick={clearTypeFilters}
                                                             title="Clear all type filters"
                                                         >
@@ -1050,12 +1081,35 @@ function EntityPage() {
                                                 </div>
                                             </div>
                                         )}
-                                        
+
+                                        {/* --- Type Filters (for Wuwa characters) --- */}
+                                        {activeGame === 'wuwa' && availableTypes.length > 0 && (
+                                            <div className="type-filters-container">
+                                                <div className="type-filters">
+                                                    {availableTypes.map(attr => (
+                                                        <button
+                                                            key={attr}
+                                                            className={`type-filter-btn ${activeTypeFilters.includes(attr) ? 'active' : ''}`}
+                                                            onClick={() => toggleTypeFilter(attr)}
+                                                            title={`Filter by ${attr}`}
+                                                        >
+                                                            <i className={resonatorIconsFA[attr] || 'fas fa-tag'} /> {attr}
+                                                        </button>
+                                                    ))}
+                                                    {activeTypeFilters.length > 0 && (
+                                                        <button className="type-filter-clear" onClick={clearTypeFilters}>
+                                                            <i className="fas fa-times" /> Clear
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+
                                         {/* --- Sort Dropdown --- */}
                                         <div className="sort-dropdown-container">
                                             <label htmlFor="mod-sort-select" style={sortStyles.sortLabel}>Sort by:</label>
                                             <select id="mod-sort-select" value={sortOption} onChange={handleSortChange} style={sortStyles.sortSelect} aria-label="Sort mods">
-                                                {SORT_OPTIONS.map(option => ( <option key={option.value} value={option.value}>{option.label}</option> ))}
+                                                {SORT_OPTIONS.map(option => (<option key={option.value} value={option.value}>{option.label}</option>))}
                                             </select>
                                         </div>
                                         {/* --- End Sort Dropdown --- */}
@@ -1075,7 +1129,7 @@ function EntityPage() {
 
                                 <div ref={listContainerRef} style={{ flex: 1, overflow: 'hidden', marginTop: '10px' }}>
                                     {loading ? (
-                                        <div className={viewMode === 'grid' ? 'mods-grid' : 'mods-list'} style={{height: '100%'}}>
+                                        <div className={viewMode === 'grid' ? 'mods-grid' : 'mods-list'} style={{ height: '100%' }}>
                                             {Array.from({ length: 6 }).map((_, i) => <ModCardSkeleton key={i} viewMode={viewMode} />)}
                                         </div>
                                     ) : !filteredAndSortedAssets.length ? (
@@ -1089,7 +1143,7 @@ function EntityPage() {
                                                 itemCount={filteredAndSortedAssets.length}
                                                 itemSize={LIST_ITEM_HEIGHT}
                                                 width={bounds.width}
-                                                style={{overflowX:'hidden'}}
+                                                style={{ overflowX: 'hidden' }}
                                             >
                                                 {ListItem}
                                             </FixedSizeList>
@@ -1133,7 +1187,7 @@ function EntityPage() {
             />
 
             {/* Modals */}
-            {isEditModalOpen && editingAsset && ( <ModEditModal asset={editingAsset} currentEntitySlug={entitySlug} onClose={handleCloseEditModal} onSaveSuccess={handleSaveEditSuccess} /> )}
+            {isEditModalOpen && editingAsset && (<ModEditModal asset={editingAsset} currentEntitySlug={entitySlug} onClose={handleCloseEditModal} onSaveSuccess={handleSaveEditSuccess} />)}
             {isDeleteModalOpen && assetToDelete && (
                 <ConfirmationModal
                     isOpen={isDeleteModalOpen}
@@ -1149,7 +1203,7 @@ function EntityPage() {
                     This action will remove the mod files from your disk and cannot be undone.
                 </ConfirmationModal>
             )}
-            {isAddToPresetModalOpen && addToPresetAsset && ( <AddToPresetModal assetId={addToPresetAsset.id} assetName={addToPresetAsset.name} isOpen={isAddToPresetModalOpen} onClose={handleCloseAddToPresetModal} /> )}
+            {isAddToPresetModalOpen && addToPresetAsset && (<AddToPresetModal assetId={addToPresetAsset.id} assetName={addToPresetAsset.name} isOpen={isAddToPresetModalOpen} onClose={handleCloseAddToPresetModal} />)}
         </div>
     );
 }

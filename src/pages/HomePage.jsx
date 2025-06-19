@@ -30,6 +30,17 @@ const attributes = [
     { key: 'AuricInk', name: 'Auric Ink', icon: 'fas fa-paint-brush', color: 'var(--zzz-auric-ink)' },
 ];
 
+// Attribute data for Wuwa
+const resonatorAttributes = [
+    { key: 'all',    name: 'All',    icon: 'fas fa-circle-nodes', color: 'var(--light)' },
+    { key: 'Aero',   name: 'Aero',   icon: 'fas fa-wind',         color: 'var(--wuwa-aero)' },
+    { key: 'Electro',name: 'Electro',icon: 'fas fa-bolt',         color: 'var(--wuwa-electro)' },
+    { key: 'Fusion', name: 'Fusion', icon: 'fas fa-fire-flame-curved', color: 'var(--wuwa-fusion)' },
+    { key: 'Glacio', name: 'Glacio', icon: 'fas fa-snowflake',    color: 'var(--wuwa-glacio)' },
+    { key: 'Havoc',  name: 'Havoc',  icon: 'fas fa-explosion',    color: 'var(--wuwa-havoc)' },
+    { key: 'Spectro',name: 'Spectro',icon: 'fas fa-sun',          color: 'var(--wuwa-spectro)' },
+];
+
 // Helper to safely parse JSON
 const safeParseJson = (jsonString, defaultValue = null) => {
     if (!jsonString) return defaultValue;
@@ -63,6 +74,7 @@ function HomePage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedElement, setSelectedElement] = useState('all');
     const [selectedAttribute, setSelectedAttribute] = useState('all');
+    const [selectedResonatorAttr, setSelectedResonatorAttr] = useState('all');
     const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
     const [activeGame, setActiveGame] = useState('genshin');
     const sortStorageKey = `categorySort_${categorySlug}`;
@@ -107,7 +119,7 @@ function HomePage() {
             })
             .finally(() => setLoadingEntities(false));
 
-    }, [categorySlug, sortStorageKey]); // Dependencies for fetching data
+    }, [categorySlug, sortStorageKey, activeGame]); // Dependencies for fetching data
 
     // Handle Sort Change
     const handleSortChange = (event) => {
@@ -133,6 +145,12 @@ function HomePage() {
             if (categorySlug === 'characters' && activeGame === 'zzz' && selectedAttribute !== 'all') {
                 const details = safeParseJson(entity.details, {});
                 if (details?.attribute !== selectedAttribute) return false;
+            }
+            
+            // Attribute Filter (only for Wuwa characters category)
+            if (categorySlug === 'characters' && activeGame === 'wuwa' && selectedResonatorAttr !== 'all') {
+                const details = safeParseJson(entity.details, {});
+                if (details?.resonator_attribute !== selectedResonatorAttr) return false;
             }
             
             // Search Term Filter
@@ -168,79 +186,98 @@ function HomePage() {
         });
 
         return tempEntities;
-    }, [entitiesWithCounts, searchTerm, selectedElement, selectedAttribute, categorySlug, sortOption, activeGame]); // Dependencies for memoization
+    }, [entitiesWithCounts, searchTerm, selectedElement, selectedAttribute, selectedResonatorAttr, categorySlug, sortOption, activeGame]); // Dependencies for memoization
 
 
     const pageTitle = categoryInfo.name; // Use state for title
     const showElementFilters = categorySlug === 'characters' && activeGame === 'genshin';
     const showAttributeFilters = categorySlug === 'characters' && activeGame === 'zzz';
+    const showWuwaAttributeFilters = categorySlug === 'characters' && activeGame === 'wuwa';
 
     return (
         <div className="home-page fadeIn">
             <div className="page-header">
-                 <h1 className="page-title">{pageTitle}</h1>
+                <h1 className="page-title">{pageTitle}</h1>
 
                  {/* Sort Dropdown */}
-                 <div className="sort-dropdown-container" style={{ 
-                     marginLeft: (showElementFilters || showAttributeFilters) ? '20px' : 'auto', 
-                     marginRight: '20px' 
-                 }}>
-                     <label htmlFor="sort-select" style={styles.sortLabel}>Sort by:</label>
-                     <select id="sort-select" value={sortOption} onChange={handleSortChange} style={styles.sortSelect} aria-label="Sort entities">
-                         {sortOptions.map(option => ( <option key={option.value} value={option.value}>{option.label}</option> ))}
-                     </select>
-                 </div>
+                <div className="sort-dropdown-container" style={{ 
+                    marginLeft: (showElementFilters || showAttributeFilters || showWuwaAttributeFilters) ? '20px' : 'auto', 
+                    marginRight: '20px' 
+                }}>
+                    <label htmlFor="sort-select" style={styles.sortLabel}>Sort by:</label>
+                    <select id="sort-select" value={sortOption} onChange={handleSortChange} style={styles.sortSelect} aria-label="Sort entities">
+                        {sortOptions.map(option => ( <option key={option.value} value={option.value}>{option.label}</option> ))}
+                    </select>
+                </div>
 
                  {/* Element Filters (Conditional for Genshin) */}
-                 {showElementFilters && (
-                     <div className="element-filters">
-                          {elements.map(element => (
-                             <button
-                                 key={element.key}
-                                 className={`element-filter-button ${selectedElement === element.key ? 'active' : ''}`}
-                                 onClick={() => setSelectedElement(element.key)}
-                                 title={element.name}
-                                 style={{ '--element-color': element.color }}
-                             >
-                                 <i className={`${element.icon} fa-fw`}></i>
-                                 <span className="filter-button-name">{element.name}</span>
-                             </button>
-                         ))}
-                     </div>
-                 )}
+                {showElementFilters && (
+                    <div className="element-filters">
+                        {elements.map(element => (
+                            <button
+                                key={element.key}
+                                className={`element-filter-button ${selectedElement === element.key ? 'active' : ''}`}
+                                onClick={() => setSelectedElement(element.key)}
+                                title={element.name}
+                                style={{ '--element-color': element.color }}
+                            >
+                                <i className={`${element.icon} fa-fw`}></i>
+                                <span className="filter-button-name">{element.name}</span>
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                  {/* Attribute Filters (Conditional for ZZZ) */}
-                 {showAttributeFilters && (
-                     <div className="attribute-filters">
-                          {attributes.map(attribute => (
-                             <button
-                                 key={attribute.key}
-                                 className={`attribute-filter-button ${selectedAttribute === attribute.key ? 'active' : ''}`}
-                                 onClick={() => setSelectedAttribute(attribute.key)}
-                                 title={attribute.name}
-                                 style={{ '--attribute-color': attribute.color }}
-                             >
-                                 <i className={`${attribute.icon} fa-fw`}></i>
-                                 <span className="filter-button-name">{attribute.name}</span>
-                             </button>
-                         ))}
-                     </div>
-                 )}
+                {showAttributeFilters && (
+                    <div className="attribute-filters">
+                        {attributes.map(attribute => (
+                            <button
+                                key={attribute.key}
+                                className={`attribute-filter-button ${selectedAttribute === attribute.key ? 'active' : ''}`}
+                                onClick={() => setSelectedAttribute(attribute.key)}
+                                title={attribute.name}
+                                style={{ '--attribute-color': attribute.color }}
+                            >
+                                <i className={`${attribute.icon} fa-fw`}></i>
+                                <span className="filter-button-name">{attribute.name}</span>
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                 {/* Attribute Filters (Conditional for Wuwa) */}
+                {showWuwaAttributeFilters && (
+                    <div className="attribute-filters">
+                        {resonatorAttributes.map(attribute => (
+                            <button
+                                key={attribute.key}
+                                className={`attribute-filter-button ${selectedResonatorAttr === attribute.key ? 'active' : ''}`}
+                                onClick={() => setSelectedResonatorAttr(attribute.key)}
+                                title={attribute.name}
+                                style={{ '--attribute-color': attribute.color }}
+                            >
+                                <i className={`${attribute.icon} fa-fw`}></i>
+                                <span className="filter-button-name">{attribute.name}</span>
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                  {/* Search Bar Container */}
-                 <div className="search-bar-container">
-                      <div className="search-bar">
-                         <i className="fas fa-search"></i>
-                         <input
-                             type="text"
-                             placeholder={`Search ${pageTitle ? pageTitle.toLowerCase() : 'items'}...`}
-                             value={searchTerm}
-                             onChange={(e) => setSearchTerm(e.target.value)}
-                             aria-label={`Search ${pageTitle}`}
-                             data-global-search="true"
-                         />
-                     </div>
-                 </div>
+                <div className="search-bar-container">
+                    <div className="search-bar">
+                        <i className="fas fa-search"></i>
+                        <input
+                            type="text"
+                            placeholder={`Search ${pageTitle ? pageTitle.toLowerCase() : 'items'}...`}
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            aria-label={`Search ${pageTitle}`}
+                            data-global-search="true"
+                        />
+                    </div>
+                </div>
             </div>
 
             {/* Content Area */}
@@ -250,24 +287,24 @@ function HomePage() {
                     {Array.from({ length: 12 }).map((_, i) => <EntityCardSkeleton key={i} />)}
                 </div>
             ) : error ? (
-                 <div className="placeholder-text" style={{ color: 'var(--danger)' }}>Error: {error}</div>
-             ) : (
-                 <div className="cards-grid">
-                     {filteredAndSortedEntities.length > 0 ? (
+                <div className="placeholder-text" style={{ color: 'var(--danger)' }}>Error: {error}</div>
+            ) : (
+                <div className="cards-grid">
+                    {filteredAndSortedEntities.length > 0 ? (
                         filteredAndSortedEntities.map(entityData => (
                             <EntityCard key={entityData.slug} entity={entityData} />
                         ))
-                     ) : entitiesWithCounts.length > 0 ? (
-                          <p className="placeholder-text" style={{ gridColumn: '1 / -1' }}>
-                              No {pageTitle ? pageTitle.toLowerCase() : 'items'} found matching your criteria.
-                          </p>
-                      ) : (
-                          <p className="placeholder-text" style={{ gridColumn: '1 / -1' }}>
-                             No {pageTitle ? pageTitle.toLowerCase() : 'items'} have been added yet.
-                          </p>
-                     )}
-                 </div>
-             )}
+                    ) : entitiesWithCounts.length > 0 ? (
+                        <p className="placeholder-text" style={{ gridColumn: '1 / -1' }}>
+                            No {pageTitle ? pageTitle.toLowerCase() : 'items'} found matching your criteria.
+                        </p>
+                    ) : (
+                        <p className="placeholder-text" style={{ gridColumn: '1 / -1' }}>
+                            No {pageTitle ? pageTitle.toLowerCase() : 'items'} have been added yet.
+                        </p>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
