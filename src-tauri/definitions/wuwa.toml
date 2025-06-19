@@ -4,7 +4,40 @@
 [characters]
 name = "Characters"
 entities = [
-  { name = "Aalto", slug = "aalto", description = "Aalto is an enigmatic Information Broker, known for his elusive nature and welcoming smile. Rumor has it he'll provide any information at the right price.", details = '{"rarity": "4 Star", "resonator_attribute": "Aero", "resonator_weapon": "Pistols"}', base_image = "aalto_base.jpg" }
+    { name = "Aalto", slug = "aalto", description = "Aalto is an enigmatic Information Broker, known for his elusive nature and welcoming smile. Rumor has it he'll provide any information at the right price.", details = '{"rarity": "4 Star", "resonator_attribute": "Aero", "resonator_weapon": "Pistols"}', base_image = "aalto_base.jpg" },
+    { name = "Baizhi", slug = "baizhi", description = "Baizhi is a researcher in Remnant Ecoacoustics at Huaxu Academy. Baizhi's once unfulfilled wish has now manifested as her loyal companion. The Remnant Creature You'tan is her source of healing powers, and a lifelong research focus.", details = '{"rarity": "4 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Rectifier"}', base_image = "baizhi_base.jpg" },
+    { name = "Brant", slug = "brant", description = "Brant is the captain of the Troupe of Fools. As captain of the Fool's Troupe, Brant exudes a carefree, easygoing charm, unbound by convention. Beneath his flamboyant persona lies a genuine heart, deeply devoted to his family and companions. His life is dedicated to securing a safe haven for the Troupe’s members.", details = '{"rarity": "5 Star", "resonator_attribute": "Fusion", "resonator_weapon": "Sword"}', base_image = "brant_base.jpg" },
+    { name = "Calcharo", slug = "calcharo", description = "Calcharo is a former Exile from the New Federation's Lawless Zone and the leader of the Ghost Hounds.", details = '{"rarity": "5 Star", "resonator_attribute": "Electro", "resonator_weapon": "Broadblade"}', base_image = "calcharo_base.jpg" },
+    { name = "Camellya", slug = "camellya", description = "Camellya is a Bloom Bearer of the Black Shores, and handles the combat-oriented germination tests given to new candidates.", details = '{"rarity": "5 Star", "resonator_attribute": "Havoc", "resonator_weapon": "Sword"}', base_image = "camellya_base.jpg" },
+    { name = "Cantarella", slug = "cantarella", description = "Cantarella is the thirty-sixth matriarch of the Fisalia family, and the former Blessed Maiden of Imperator.", details = '{"rarity": "5 Star", "resonator_attribute": "Havoc", "resonator_weapon": "Rectifier"}', base_image = "cantarella_base.jpg" },
+    { name = "Carlotta", slug = "carlotta", description = "Carlotta is the second daughter of the esteemed Montelli family of Rinascita, embodying innate nobility and a refined appreciation for art.", details = '{"rarity": "5 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Pistols"}', base_image = "carlotta_base.jpg" },
+    { name = "Cartethyia", slug = "cartethyia", description = "Throughout Rinascita, Cartethyia is revered as Fleurdelys, the 'Blessed Maiden,' and in some accounts, 'The Martyred Maiden.' As a key figure in the region’s history, she holds profound influence, with her connections to the Sentinel Imperator, the Threnodian Leviathan, and the Dark Tide.", details = '{"rarity": "5 Star", "resonator_attribute": "Aero", "resonator_weapon": "Sword"}', base_image = "cartethyia_base.jpg" },
+    { name = "Changli", slug = "changli", description = "Changli is the Former Secretary-General of the Central Secretariat in Mingting, the capital, and now serves as Counselor to the Jinzhou Magistrate.", details = '{"rarity": "5 Star", "resonator_attribute": "Fusion", "resonator_weapon": "Sword"}', base_image = "changli_base.jpg" },
+    { name = "Chixia", slug = "chixia", description = "Chixia is a young Patroller who casts her jubilant figure along the streets of Jinzhou city.", details = '{"rarity": "4 Star", "resonator_attribute": "Fusion", "resonator_weapon": "Pistols"}', base_image = "chixia_base.jpg" },
+    { name = "Ciaccona", slug = "ciaccona", description = "Ciaccona is a free-spirited, romantic, sincere, and passionate bard. On her journey, she sang radiant poems of saints and heroes, weaving tales of people, miracles, turmoil, and suffering—along with the sorrow of death and farewell.", details = '{"rarity": "5 Star", "resonator_attribute": "Aero", "resonator_weapon": "Pistols"}', base_image = "ciaccona_base.jpg" },
+    { name = "Danjin", slug = "danjin", description = "Danjin is a member of the Midnight Rangers.", details = '{"rarity": "4 Star", "resonator_attribute": "Havoc", "resonator_weapon": "Sword"}', base_image = "danjin_base.jpg" },
+    { name = "Encore", slug = "encore", description = "Encore is from the New Federation and is a Consultant of the Black Shores.", details = '{"rarity": "5 Star", "resonator_attribute": "Fusion", "resonator_weapon": "Rectifier"}', base_image = "encore_base.jpg" },
+    { name = "Jianxin", slug = "jianxin", description = "Jianxin is a Taoist monk and successor of Fengyiquan (风仪拳). She has dedicated her life to mastering the ultimate martial art.", details = '{"rarity": "5 Star", "resonator_attribute": "Aero", "resonator_weapon": "Gauntlets"}', base_image = "jianxin_base.jpg" },
+    { name = "Jinhsi", slug = "jinhsi", description = "Jinhsi is the magistrate of Jinzhou. She has a resonance connection with the Sentinel, Jué, who manifests in the shape of a Loong.", details = '{"rarity": "5 Star", "resonator_attribute": "Spectro", "resonator_weapon": "Broadblade"}', base_image = "jinhsi_base.jpg" },
+    { name = "Jiyan", slug = "jiyan", description = "Jiyan is the general of the Midnight Rangers selected by the sentinel of Jinzhou, Jué and is stationed in the same city.", details = '{"rarity": "5 Star", "resonator_attribute": "Aero", "resonator_weapon": "Broadblade"}', base_image = "jiyan_base.jpg" },
+    { name = "Lingyang", slug = "lingyang", description = "Lingyang is a member of the Liondance Troupe in Jinzhou and the last living Suan'ni.", details = '{"rarity": "5 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Gauntlets"}', base_image = "lingyang_base.jpg" },
+    { name = "Lumi", slug = "lumi", description = "Lumi is a navigator at Lollo Logistics and leader of a transport squad team.", details = '{"rarity": "5 Star", "resonator_attribute": "Electro", "resonator_weapon": "Broadblade"}', base_image = "lumi_base.jpg" },
+    { name = "Mortefi", slug = "mortefi", description = "Mortefi hails from the New Federation and is the head of the Branch of Tacetite Weaponry within the Department of Safety in Huaxu Academy at Jinzhou.", details = '{"rarity": "4 Star", "resonator_attribute": "Fusion", "resonator_weapon": "Pistols"}', base_image = "mortefi_base.jpg" },
+    { name = "Phoebe", slug = "phoebe", description = "Phoebe is an Acolyte of the Order of the Deep. She is a young woman of quiet devotion. With a kind heart, she fulfills her duties with unwavering diligence. Her prayers, like the light she carries, offer comfort and peace to all.", details = '{"rarity": "5 Star", "resonator_attribute": "Spectro", "resonator_weapon": "Rectifier"}', base_image = "phoebe_base.jpg" },
+    { name = "Roccia", slug = "roccia", description = "Roccia is a gifted improvisational comedian and the First Mate of the Troupe of Fools, known for her mastery of stage props.", details = '{"rarity": "5 Star", "resonator_attribute": "Havoc", "resonator_weapon": "Gauntlets"}', base_image = "roccia_base.jpg" },
+    { name = "Rover Female", slug = "rover_female", description = "Awakened with an unknown past, Rover is an Arbiter who embarks on a journey to uncover the truth to regain their lost memories. As secrets are unveiled, they establish deeper connections with the world.", details = '{"rarity": "5 Star", "resonator_attribute": "Multiple", "resonator_weapon": "Sword"}', base_image = "rover_female_base.jpg" },
+    { name = "Rover Male", slug = "rover_male", description = "Awakened with an unknown past, Rover is an Arbiter who embarks on a journey to uncover the truth to regain their lost memories. As secrets are unveiled, they establish deeper connections with the world.", details = '{"rarity": "5 Star", "resonator_attribute": "Multiple", "resonator_weapon": "Sword"}', base_image = "rover_male_base.jpg" },
+    { name = "Sanhua", slug = "sanhua", description = "Sanhua is the loyal and reliable guard of Jinhsi who perceives a world distinctly different from that in the eyes of others.", details = '{"rarity": "4 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Sword"}', base_image = "sanhua_base.jpg" },
+    { name = "The Shorekeeper", slug = "shorekeeper", description = "The Shorekeeper is known as 'the Second Instance,' the Guardian of the Black Shores, a mythical entity of high-purity Remnant Energy crystals with the power to control the stars, only appearing during time of crisis to aid the true leader of the Black Shores. Unlike conventional resonance logic, the Second Instance can directly utilize Remnant Energy as her body is composed of Sonoro Spheres. ", details = '{"rarity": "5 Star", "resonator_attribute": "Spectro", "resonator_weapon": "Rectifier"}', base_image = "shorekeeper_base.jpg" },
+    { name = "Taoqi", slug = "taoqi", description = "Taoqi is the director of border defense at the Ministry of Development.", details = '{"rarity": "4 Star", "resonator_attribute": "Havoc", "resonator_weapon": "Broadblade"}', base_image = "taoqi_base.jpg" },
+    { name = "Verina", slug = "verina", description = "Verina is a botanist from the New Federation who dwells in Jinzhou, Huanglong.", details = '{"rarity": "5 Star", "resonator_attribute": "Spectro", "resonator_weapon": "Rectifier"}', base_image = "verina_base.jpg" },
+    { name = "Xiangli Yao", slug = "xiangli_yao", description = "Xiangli Yao is the Principal Investigator in charge of the academics at Huaxu Academy's Jinzhou Campus. He is the Academy's youngest multi-disciplinary scientist, and an expert in the research of Automata Mechanics.", details = '{"rarity": "5 Star", "resonator_attribute": "Electro", "resonator_weapon": "Gauntlets"}', base_image = "xiangli_yao_base.jpg" },
+    { name = "Yangyang", slug = "yangyang", description = "Yangyang is an outrider of the Midnight Rangers.", details = '{"rarity": "4 Star", "resonator_attribute": "Aero", "resonator_weapon": "Sword"}', base_image = "yangyang_base.jpg" },
+    { name = "Yinlin", slug = "yinlin", description = "Yinlin was previously an outstanding Jinzhou Patroller, known for being steady and reliable.", details = '{"rarity": "5 Star", "resonator_attribute": "Electro", "resonator_weapon": "Rectifier"}', base_image = "yinlin_base.jpg" },
+    { name = "Youhu", slug = "youhu", description = "Youhu is an antiquarian from Huanglong.", details = '{"rarity": "4 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Gauntlets"}', base_image = "youhu_base.jpg" },
+    { name = "Yuanwu", slug = "yuanwu", description = "Yuanwu owns a boxing gym where he teaches martial arts and health management, and is well-respected in the community for his cordial demeanor and pleasant temperament.", details = '{"rarity": "4 Star", "resonator_attribute": "Electro", "resonator_weapon": "Gauntlets"}', base_image = "yuanwu_base.jpg" },
+    { name = "Zani", slug = "zani", description = "Zani is a staff member of the Montelli Family's Averardo Bank in Ragunna. As a serious and reliable Montelli employee, Zani follows a strict routine and manages tasks with ease. For years, she has clocked in on time without fail, finding as much enjoyment in her well-ordered life as in her carefully planned moments of leisure.", details = '{"rarity": "5 Star", "resonator_attribute": "Spectro", "resonator_weapon": "Gauntlets"}', base_image = "zani_base.jpg" },
+    { name = "Zhezhi", slug = "zhezhi", description = "Zhezhi is a commissioned painter, quiet and shy with a dedication to her craft. She's not very eloquent, but her persistence and love for painting speak volumes.", details = '{"rarity": "5 Star", "resonator_attribute": "Glacio", "resonator_weapon": "Rectifier"}', base_image = "zhezhi_base.jpg" },
 ]
 
 # ===================
@@ -12,24 +45,21 @@ entities = [
 # ===================
 [npcs]
 name = "NPCs"
-entities = [
-]
+entities = []
 
 # ===================
 # ====  Enemies  ====
 # ===================
 [enemies]
 name = "Enemies"
-entities = [
-]
+entities = []
 
 # ===================
 # ====  Weapons  ====
 # ===================
 [weapons]
 name = "Weapons"
-entities = [
-]
+entities = []
 
 # ===================
 # ====  Objects  ====
@@ -37,6 +67,8 @@ entities = [
 [objects]
 name = "Objects"
 entities = [
+    { name = "Glider", slug = "glider", description = "Item used to glide through the air.", details = '{"type": "Glider"}', base_image = "glider_base.jpg" },
+    { name = "Terminal", slug = "terminal", description = "Terminal is a device used by Resonators. Each Terminal has various functions that aid Resonators in exploration, navigation and collection in Solaris-3. Terminals vary in appearance and function depending on the nation, as can be visually seen in the difference between the Terminals of Resonators from Huanglong, Rinascita and The Black Shores. The Rover carries a unique version of the Terminal that can be upgraded. w", details = '{"type": "Terminal"}', base_image = "terminal_base.jpg" },
 ]
 
 # ===================
@@ -45,4 +77,8 @@ entities = [
 [ui]
 name = "UI"
 entities = [
+    { name = "GUI", slug = "wuwa-gui", description = "Graphical User Interface.", details = '{"type": "GUI"}', base_image = "wuwa-gui_base.jpg" },
+    { name = "Icons", slug = "wuwa-icons", description = "Game icons.", details = '{"type": "Icons"}', base_image = "wuwa-icons_base.jpg" },
+    { name = "Map", slug = "wuwa-map", description = "Map modifications.", details = '{"type": "Map"}', base_image = "wuwa-map_base.jpg" },
+    { name = "Loading screens", slug = "wuwa-loading-screens", description = "Loading screens.", details = '{"type": "Screens"}', base_image = "wuwa-loading-screen_base.jpg" },
 ]
