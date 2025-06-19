@@ -41,6 +41,14 @@ const parseDetails = (detailsJson) => {
     }
 };
 
+const getRarityColor = (value) => {
+    if (!value) return '#888'; // Default color for unknown rarity
+    const val = value.toLowerCase();
+    if (val === '5 star' || val === 's') return '#ffcc00'; // Gold
+    if (val === '4 star' || val === 'a') return '#a259ec'; // Purple
+    return '#888'; // Gray for fallback
+}
+
 // Genshin Font Awesome icons map
 const elementIconsFA = {
     Electro: "fas fa-bolt", Pyro: "fas fa-fire", Cryo: "fas fa-snowflake",
@@ -81,7 +89,7 @@ const typeIconsFA = {
     // Add more common types as needed
 };
 
-// Font Awesome icons map for Wuwa resonator attributes
+// Wuwa Font Awesome icons map
 const resonatorIconsFA = {
     Aero: "fas fa-wind",
     Electro: "fas fa-bolt",
@@ -91,6 +99,15 @@ const resonatorIconsFA = {
     Spectro: "fas fa-sun",
     // Add more Wuwa resonator attributes as needed
 };
+
+const resonatorWeaponFA = {
+    Broadblade: "fas fa-khanda",
+    Gauntlets: "fas fa-hands",
+    Pistols: "fas fa-gun",
+    Rectifier: "fas fa-satellite",
+    Sword: "fas fa-khanda",
+    // Add more weapon types as needed
+}
 
 
 const EnhancedScrollIndicator = ({ onViewMods }) => {
@@ -171,7 +188,7 @@ const EnhancedScrollIndicator = ({ onViewMods }) => {
     );
 };
 
-const RarityIcon = () => <i className="fas fa-star fa-fw" style={{ color: '#ffcc00' }}></i>;
+const RarityIcon = ({ value }) => <i className="fas fa-star fa-fw" style={{ color: getRarityColor(value) }}></i>;
 const TypeIcon = () => <i className="fas fa-tag fa-fw" style={{ color: '#7acbf9' }}></i>;
 const DEFAULT_ENTITY_PLACEHOLDER_IMAGE = '/images/unknown.jpg';
 const FALLBACK_MOD_IMAGE = '/images/placeholder.jpg';
@@ -800,8 +817,10 @@ function EntityPage() {
 
     // Wuwa-specific properties
     const wuwaAttribute = details?.resonator_attribute;
-    const wuwaWeapon = details?.resonator_weapon;
     const wuwaAttributeIconClass = wuwaAttribute ? (resonatorIconsFA[wuwaAttribute] || 'fas fa-question-circle') : null;
+    const wuwaWeapon = details?.resonator_weapon;
+    const wuwaWeaponIconClass = wuwaWeapon ? (resonatorWeaponFA[wuwaWeapon] || 'fas fa-question-circle') : null;
+    const wuwaRarity = details?.rarity;
 
     const avatarUrl = entity.base_image ? `/images/entities/${entitySlug}_base.jpg` : DEFAULT_ENTITY_PLACEHOLDER_IMAGE;
     const handleAvatarError = (e) => {
@@ -898,7 +917,7 @@ function EntityPage() {
                                         }
                                         {/* Display attribute icon for Wuwa characters */}
                                         {wuwaAttributeIconClass && activeGame === 'wuwa' &&
-                                            <span className="attribute-icon" style={{ color: `var(--wuwa-${attribute?.toLowerCase()})` || 'var(--primary)' }} title={`Attribute: ${wuwaAttribute}`}>
+                                            <span className="attribute-icon" style={{ color: `var(--wuwa-${wuwaAttribute?.toLowerCase()})` || 'var(--primary)' }} title={`Attribute: ${wuwaAttribute}`}>
                                                 <i className={`${wuwaAttributeIconClass} fa-fw`}></i>
                                             </span>
                                         }
@@ -908,7 +927,7 @@ function EntityPage() {
                                         {/* Genshin-specific details */}
                                         {activeGame === 'genshin' && element &&
                                             <div className="character-detail">
-                                                <i className={`${elementIconClass} fa-fw`}></i> {element}
+                                                <i className={`${elementIconClass} fa-fw`} style={{ color: `var(--${element?.toLowerCase()})` || 'var(--primary)' }} title={element}></i> {element}
                                             </div>
                                         }
                                         {activeGame === 'genshin' && weapon &&
@@ -918,14 +937,14 @@ function EntityPage() {
                                         }
                                         {activeGame === 'genshin' && rarity &&
                                             <div className="character-detail">
-                                                <i className="fas fa-star fa-fw" style={{ color: '#ffcc00' }}></i> {rarity}
+                                                <i className="fas fa-star fa-fw" style={{ color: getRarityColor(rarity) }}></i> {rarity}
                                             </div>
                                         }
 
                                         {/* ZZZ-specific details */}
                                         {activeGame === 'zzz' && attribute &&
                                             <div className="character-detail">
-                                                <i className={`${attributeIconClass} fa-fw`}></i> {attribute}
+                                                <i className={`${attributeIconClass} fa-fw`} style={{ color: `var(--zzz-${attribute?.toLowerCase()})` || 'var(--primary)' }} title={`Attribute: ${attribute}`}></i> {attribute}
                                             </div>
                                         }
                                         {activeGame === 'zzz' && specialty &&
@@ -935,7 +954,7 @@ function EntityPage() {
                                         }
                                         {activeGame === 'zzz' && rank &&
                                             <div className="character-detail">
-                                                <i className="fas fa-medal fa-fw" style={{ color: '#ffaa33' }}></i> Rank {rank}
+                                                <i className="fas fa-medal fa-fw" style={{ color: getRarityColor(rank) }}></i> Rank {rank}
                                             </div>
                                         }
 
@@ -949,6 +968,23 @@ function EntityPage() {
                                                 ))}
                                             </div>
                                         )}
+
+                                        {/* Wuwa-specific details */}
+                                        {activeGame === 'wuwa' && wuwaAttribute &&
+                                            <div className="character-detail">
+                                                <i className={`${wuwaAttributeIconClass} fa-fw`} style={{ color: `var(--wuwa-${wuwaAttribute?.toLowerCase()})` || 'var(--primary)' }} title={`Attribute: ${wuwaAttribute}`}></i> {wuwaAttribute}
+                                            </div>
+                                        }
+                                        {activeGame === 'wuwa' && wuwaWeapon &&
+                                            <div className="character-detail">
+                                                <i className={`${wuwaWeaponIconClass} fa-fw`}></i> {wuwaWeapon}
+                                            </div>
+                                        }
+                                        {activeGame === 'wuwa' && wuwaRarity &&
+                                            <div className="character-detail">
+                                                <i className="fas fa-star fa-fw" style={{ color: getRarityColor(wuwaRarity) }}></i> {wuwaRarity}
+                                            </div>
+                                        }
                                     </div>
                                     {entity.description ? (
                                         <p className="character-description">{entity.description}</p>
