@@ -1,6 +1,6 @@
 [package]
 name = "gmm"
-version = "2.6.1"
+version = "3.0.0"
 description = "GMM"
 authors = ["Eidenz"]
 edition = "2021"
