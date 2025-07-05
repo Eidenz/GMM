@@ -90,8 +90,9 @@ entities = [
 [ui]
 name = "UI"
 entities = [
-    { name = "Icons", slug = "zzz-icons", description = "Game icons.", details = '{"type": "Icons"}', base_image = "zzz_icons.jpg" },
-    { name = "Effects", slug = "zzz-effects", description = "Game effects.", details = '{"type": "FX"}', base_image = "zzz_effects.jpg" },
-    { name = "Map", slug = "zzz-map", description = "Map modifications.", details = '{"type": "Map"}', base_image = "zzzmap.jpg" },
-    { name = "Loading screens", slug = "zzz-loading-screens", description = "Loading screens.", details = '{"type": "Screens"}', base_image = "zzzloadingscreen.jpg" },
+    { name = "GUI", slug = "zzz-gui", description = "Graphical User Interface.", details = '{"type": "GUI"}', base_image = "zzz-gui_base.jpg" },
+    { name = "Icons", slug = "zzz-icons", description = "Game icons.", details = '{"type": "Icons"}', base_image = "zzz-icons_base.jpg" },
+    { name = "Effects", slug = "zzz-effects", description = "Game effects.", details = '{"type": "FX"}', base_image = "zzz-effects.jpg" },
+    { name = "Map", slug = "zzz-map", description = "Map modifications.", details = '{"type": "Map"}', base_image = "zzz-map_base.jpg" },
+    { name = "Loading screens", slug = "zzz-loading-screens", description = "Loading screens.", details = '{"type": "Screens"}', base_image = "zzz-loading-screen_base.jpg" },
 ]
