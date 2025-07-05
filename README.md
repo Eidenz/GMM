@@ -32,7 +32,7 @@ GMM aims to simplify the process of installing, organizing, and switching betwee
 
 ## 📸 Screenshots
 
-![Dashboard](https://github.com/user-attachments/assets/6e9f6d59-45bc-4a2c-97d2-35849f77186a)
+![Dashboard](https://github.com/user-attachments/assets/cd86610f-b027-4f9d-813b-23769e9e65b1)
 
 ![Character page](https://github.com/user-attachments/assets/1e387440-f39f-43c6-a2e1-83b389017e5e)
 
