@@ -41,7 +41,9 @@ entities = [
     { name = "Hugo Vlad", slug = "hugo", description = "Hugo Vlad is a playable Agent in Zenless Zone Zero, and a member of Mockingbird.", details = '{"rank": "S", "attribute": "Ice", "specialty": "Attack", "type": ["Slash"]}', base_image = "hugo_base.jpg" },
     { name = "Ju Fufu", slug = "jufufu", description = "Ju Fufu is a playable Agent in Zenless Zone Zero, and a member of Yunkui Summit.", details = '{"rank": "S", "attribute": "Fire", "specialty": "Stun", "type": [""]}', base_image = "jufufu_base.jpg" },
     { name = "Yixuan", slug = "yixuan", description = "Yixuan is a playable Agent in Zenless Zone Zero, and the High Preceptor of Yunkui Summit.", details = '{"rank": "S", "attribute": "AuricInk", "specialty": "Rupture", "type": ["Strike"]}', base_image = "yixuan_base.jpg" },
-    { name = "Pan Yinhu", slug = "yinhu", description = "Pan Yinhu is a playable Agent in Zenless Zone Zero, and a member of Yunkui Summit.", details = '{"rank": "A", "attribute": "Physical", "specialty": "Defense", "type": [""]}', base_image = "yinhu_base.jpg" },
+    { name = "Pan Yinhu", slug = "yinhu", description = "Pan Yinhu is a playable Agent in Zenless Zone Zero, and a member of Yunkui Summit.", details = '{"rank": "A", "attribute": "Physical", "specialty": "Defense", "type": ["Strike"]}', base_image = "yinhu_base.jpg" },
+    { name = "Ukinami Yuzuha", slug = "yuzuha", description = "Ukinami Yuzuha is a playable Agent in Zenless Zone Zero, and a member of the Spook Shack.", details = '{"rank": "S", "attribute": "Physical", "specialty": "Support", "type": [""]}', base_image = "yuzuha_base.jpg" },
+    { name = "Alice Thymefield", slug = "alice", description = "Alice Thymefield is a playable Agent in Zenless Zone Zero, and a member of the Spook Shack.", details = '{"rank": "S", "attribute": "Physical", "specialty": "Anomaly", "type": [""]}', base_image = "alice_base.jpg" },
 ]
 
 # ===================
